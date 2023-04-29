@@ -23,6 +23,8 @@ shape = SubResource("CapsuleShape3D_6vbtk")
 mesh = SubResource("CapsuleMesh_hsq3r")
 skeleton = NodePath("../..")
 
-[node name="Walking" type="Node" parent="." node_paths=PackedStringArray("body")]
+[node name="Walking" type="Node" parent="." node_paths=PackedStringArray("body", "camera")]
 script = ExtResource("1_6l78a")
 body = NodePath("..")
+camera = NodePath("../Camera3D")
+speed = 15.0
