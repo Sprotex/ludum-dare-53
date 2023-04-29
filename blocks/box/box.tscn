@@ -6,11 +6,12 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t60st"]
 
-[node name="Box" type="RigidBody3D"]
+[node name="Box" type="RigidBody3D" node_paths=PackedStringArray("mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_cpfrd")
+mesh = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_relkl")

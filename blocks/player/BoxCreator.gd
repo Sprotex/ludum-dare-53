@@ -10,8 +10,10 @@ func create() -> void:
 	var box = box_scene_holder.create_instance()
 	body.add_collision_exception_with(box)
 	var tween = get_tree().create_tween()
-	tween.bind_node(box)
-	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC).tween_property(box, "scale", Vector3.ONE, 0.5).from(Vector3.ZERO)
+	tween.bind_node.call_deferred(box)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_method(box.change_visual_scale, Vector3.ZERO, Vector3.ONE, 0.5)
 	box_weilder.set_box(box)
 
 
