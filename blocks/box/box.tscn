@@ -7,6 +7,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_t60st"]
 
 [node name="Box" type="RigidBody3D" node_paths=PackedStringArray("mesh")]
+collision_mask = 7
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_cpfrd")

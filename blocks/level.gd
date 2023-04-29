@@ -4,6 +4,7 @@ extends Node3D
 @export var boxes: Node3D
 @export var camera: Camera3D
 @export var enemies: Node3D
+@export var spawner: Spawner
 
 func _on_tree_entered():
 	LevelReference.level = self
