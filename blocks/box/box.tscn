@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://kjih6718j3jp"]
+[gd_scene load_steps=5 format=3 uid="uid://kjih6718j3jp"]
 
 [ext_resource type="Script" path="res://blocks/box/Box.gd" id="1_cpfrd"]
 
@@ -6,12 +6,17 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t60st"]
 
-[node name="Box" type="RigidBody3D" node_paths=PackedStringArray("mesh")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_nr0v3"]
+radius = 5.83543
+
+[node name="Box" type="RigidBody3D" node_paths=PackedStringArray("mesh", "timer", "explosion_sphere")]
 collision_mask = 7
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_cpfrd")
 mesh = NodePath("MeshInstance3D")
+timer = NodePath("Timer")
+explosion_sphere = NodePath("Area3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -20,5 +25,15 @@ mesh = SubResource("BoxMesh_relkl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_t60st")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_nr0v3")
 
 [connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]
