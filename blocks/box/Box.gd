@@ -11,5 +11,6 @@ func is_deliverable() -> bool:
 func _on_sleeping_state_changed():
 	if not sleeping:
 		return
-	freeze = true
+	if freeze:
+		return
 	was_refrozen_since_instantiation = true
