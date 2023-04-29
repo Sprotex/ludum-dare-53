@@ -7,16 +7,16 @@ class_name Box
 var was_refrozen_since_instantiation = false
 
 func is_deliverable() -> bool:
-	return was_refrozen_since_instantiation and freeze
+  return !was_refrozen_since_instantiation and !freeze
 
 
 func change_visual_scale(new_scale: Vector3) -> void:
-	mesh.scale = new_scale
+  mesh.scale = new_scale
 
 
 func _on_sleeping_state_changed():
-	if not sleeping:
-		return
-	if freeze:
-		return
-	was_refrozen_since_instantiation = true
+  if not sleeping:
+    return
+  if freeze:
+    return
+  was_refrozen_since_instantiation = true

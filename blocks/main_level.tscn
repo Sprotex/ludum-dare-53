@@ -2,22 +2,16 @@
 
 [ext_resource type="Script" path="res://blocks/level.gd" id="1_f3xqy"]
 [ext_resource type="Material" uid="uid://v3t4seacm44a" path="res://environment/unwalkable_grid_material.tres" id="2_blm38"]
+[ext_resource type="Curve3D" uid="uid://4108kxruxiku" path="res://environment/1x1curve.tres" id="2_elap4"]
 [ext_resource type="QuadMesh" uid="uid://cferbnk24wm7h" path="res://environment/mesh/100x100_plane.tres" id="3_0qwn0"]
 [ext_resource type="Material" uid="uid://ky8njfao1uyu" path="res://environment/grid_material.tres" id="4_ysmbp"]
 [ext_resource type="QuadMesh" uid="uid://c4m2ij4h8oyln" path="res://environment/mesh/60x60_plane.tres" id="5_o7bnq"]
 [ext_resource type="Environment" uid="uid://dhvcx7ga4gqn1" path="res://environment/default_environment.tres" id="6_fidnt"]
-[ext_resource type="PackedScene" uid="uid://p75r86l51kxp" path="res://blocks/player/player.tscn" id="7_vq8vl"]
 [ext_resource type="Script" path="res://blocks/Spawnpoint.gd" id="8_gpel6"]
-[ext_resource type="PackedScene" uid="uid://kjih6718j3jp" path="res://blocks/box/box.tscn" id="9_f562p"]
+[ext_resource type="PackedScene" uid="uid://bfmcqj0v4pxbm" path="res://blocks/character/enemy/enemy.tscn" id="9_hc7q0"]
+[ext_resource type="PackedScene" uid="uid://byj8jn5wgprlq" path="res://blocks/character/player/player.tscn" id="10_yoepg"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_xpx8o"]
-
-[sub_resource type="Curve3D" id="Curve3D_vrmth"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -20, 0, -20, 0, 0, 0, 0, 0, 0, -20, 0, 20, 0, 0, 0, 0, 0, 0, 20, 0, 20, 0, 0, 0, 0, 0, 0, 20, 0, -20, 0, 0, 0, 0, 0, 0, -20, 0, -20),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
 
 [node name="MainLevel" type="Node3D" node_paths=PackedStringArray("player", "boxes", "camera", "enemies")]
 script = ExtResource("1_f3xqy")
@@ -84,12 +78,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0638552, 0, 0.0781536)
 [node name="Enemies" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0638552, 0, 0.0781536)
 
-[node name="Player" parent="." instance=ExtResource("7_vq8vl")]
-
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player"]
-remote_path = NodePath("../../PlayerFollowingRig")
-update_rotation = false
-
 [node name="PlayerFollowingRig" type="Node3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1, 0)
 
@@ -101,13 +89,20 @@ current = true
 fov = 37.8493
 size = 15.0
 
-[node name="Path3D" type="Path3D" parent="PlayerFollowingRig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-curve = SubResource("Curve3D_vrmth")
+[node name="SpawnerPath3D" type="Path3D" parent="PlayerFollowingRig"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -1, 0)
+curve = ExtResource("2_elap4")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="PlayerFollowingRig/Path3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 0, 4)
+[node name="PathFollow3D" type="PathFollow3D" parent="PlayerFollowingRig/SpawnerPath3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 script = ExtResource("8_gpel6")
-enemy_scene = ExtResource("9_f562p")
+enemy_scene = ExtResource("9_hc7q0")
+
+[node name="Player" parent="." instance=ExtResource("10_yoepg")]
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player"]
+remote_path = NodePath("../../PlayerFollowingRig")
+update_rotation = false
+update_scale = false
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

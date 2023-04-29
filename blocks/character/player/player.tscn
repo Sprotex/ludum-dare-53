@@ -1,13 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://p75r86l51kxp"]
+[gd_scene load_steps=11 format=3 uid="uid://byj8jn5wgprlq"]
 
-[ext_resource type="Script" path="res://blocks/player/MoveInput.gd" id="1_fancb"]
-[ext_resource type="Script" path="res://blocks/player/walking.gd" id="1_rb7po"]
-[ext_resource type="Script" path="res://blocks/player/BoxWeilder.gd" id="2_nvbw7"]
-[ext_resource type="Script" path="res://blocks/player/RotationAligner.gd" id="3_bksdm"]
-[ext_resource type="Script" path="res://blocks/player/BoxSceneHolder.gd" id="3_rn3dv"]
-[ext_resource type="PackedScene" uid="uid://kjih6718j3jp" path="res://blocks/box/box.tscn" id="4_dpmvk"]
-[ext_resource type="Script" path="res://blocks/player/BoxCreator.gd" id="5_dmfag"]
-[ext_resource type="Script" path="res://blocks/player/BoxThrower.gd" id="6_gnxec"]
+[ext_resource type="Script" path="res://blocks/character/player/PlayerMoveInput.gd" id="1_1u0jw"]
+[ext_resource type="Script" path="res://blocks/character/Walking.gd" id="2_x5uh0"]
+[ext_resource type="Script" path="res://blocks/character/player/RotationAligner.gd" id="3_dhrt0"]
+[ext_resource type="Script" path="res://blocks/character/player/BoxWeilder.gd" id="4_y81wd"]
+[ext_resource type="Script" path="res://blocks/character/player/BoxSceneHolder.gd" id="5_wy7pc"]
+[ext_resource type="PackedScene" uid="uid://kjih6718j3jp" path="res://blocks/box/box.tscn" id="6_fxagx"]
+[ext_resource type="Script" path="res://blocks/character/player/BoxCreator.gd" id="7_31ncr"]
+[ext_resource type="Script" path="res://blocks/character/player/BoxThrower.gd" id="8_14uhn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6vbtk"]
 
@@ -28,40 +28,41 @@ transform = Transform3D(0.251765, 0, 0, 0, 0.0881899, 0, 0, 0, 0.364906, 0, 0.53
 mesh = SubResource("CapsuleMesh_hsq3r")
 skeleton = NodePath("../..")
 
-[node name="MoveInput" type="Node" parent="."]
-script = ExtResource("1_fancb")
+[node name="PlayerMoveInput" type="Node" parent="."]
+script = ExtResource("1_1u0jw")
 
 [node name="Walking" type="Node" parent="." node_paths=PackedStringArray("body", "move_input")]
-script = ExtResource("1_rb7po")
+script = ExtResource("2_x5uh0")
 body = NodePath("..")
 speed = 50.0
 acceleration = 30.0
-move_input = NodePath("../MoveInput")
+move_input = NodePath("../PlayerMoveInput")
 inertia = 0.3
 
 [node name="RotationAligner" type="Node" parent="." node_paths=PackedStringArray("move_input", "body")]
-script = ExtResource("3_bksdm")
-move_input = NodePath("../MoveInput")
+script = ExtResource("3_dhrt0")
+move_input = NodePath("../PlayerMoveInput")
 alignment_speed = 0.2
 body = NodePath("..")
 
 [node name="BoxLogic" type="Node3D" parent="."]
 
-[node name="BoxWeilder" type="Node3D" parent="BoxLogic"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6)
-script = ExtResource("2_nvbw7")
+[node name="BoxWeilder" type="Node3D" parent="BoxLogic" node_paths=PackedStringArray("body")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1)
+script = ExtResource("4_y81wd")
+body = NodePath("../..")
 
 [node name="BoxSceneHolder" type="Node" parent="BoxLogic"]
-script = ExtResource("3_rn3dv")
-box_scene = ExtResource("4_dpmvk")
+script = ExtResource("5_wy7pc")
+box_scene = ExtResource("6_fxagx")
 
 [node name="BoxCreator" type="Node" parent="BoxLogic" node_paths=PackedStringArray("box_weilder", "box_scene_holder", "body")]
-script = ExtResource("5_dmfag")
+script = ExtResource("7_31ncr")
 box_weilder = NodePath("../BoxWeilder")
 box_scene_holder = NodePath("../BoxSceneHolder")
 body = NodePath("../..")
 
 [node name="BoxThrower" type="Node" parent="BoxLogic" node_paths=PackedStringArray("box_weilder", "body")]
-script = ExtResource("6_gnxec")
+script = ExtResource("8_14uhn")
 box_weilder = NodePath("../BoxWeilder")
 body = NodePath("../..")

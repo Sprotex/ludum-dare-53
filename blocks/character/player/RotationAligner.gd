@@ -1,11 +1,13 @@
 extends Node
 
+class_name RotationAligner
+
 @export var move_input: MoveInput
 @export var alignment_speed = 10.0
 @export var body: CharacterBody3D
 
 func _physics_process(delta: float) -> void:
-	var input_direction = move_input.camera_transformed_direction
+	var input_direction = move_input.direction
 	if input_direction == null:
 		return
 	if input_direction.length_squared() <= 0.1:

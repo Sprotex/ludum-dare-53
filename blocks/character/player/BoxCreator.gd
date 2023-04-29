@@ -8,7 +8,6 @@ class_name BoxCreator
 
 func create() -> void:
 	var box = box_scene_holder.create_instance()
-	body.add_collision_exception_with(box)
 	var tween = get_tree().create_tween()
 	tween.bind_node.call_deferred(box)
 	tween.set_ease(Tween.EASE_OUT)
@@ -22,4 +21,4 @@ func _process(delta: float) -> void:
 		return
 	if box_weilder.has_box():
 		return
-	create.call_deferred()
+	create()
