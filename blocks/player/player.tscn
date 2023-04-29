@@ -46,7 +46,7 @@ body = NodePath("..")
 [node name="BoxLogic" type="Node3D" parent="."]
 
 [node name="BoxWeilder" type="Node3D" parent="BoxLogic"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1)
 script = ExtResource("2_nvbw7")
 
 [node name="BoxSceneHolder" type="Node" parent="BoxLogic"]

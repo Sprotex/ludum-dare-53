@@ -13,7 +13,7 @@ func throw_box() -> void:
 	box.get_parent().remove_child(box)
 	LevelReference.level.boxes.add_child(box)
 	box.global_position = box_global_position
-	box.linear_velocity += box_weilder.transform.basis.z * throw_power
+	box.linear_velocity += -box_weilder.global_transform.basis.z * throw_power
 	box.angular_velocity += Random.vector(randomizer) * throw_spin_power
 
 func _process(delta: float) -> void:
