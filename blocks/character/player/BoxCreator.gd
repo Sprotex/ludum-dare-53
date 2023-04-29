@@ -5,6 +5,7 @@ class_name BoxCreator
 @export var box_weilder: BoxWeilder
 @export var box_scene_holder: BoxSceneHolder
 @export var body: CharacterBody3D
+@export var ray_cast: RayCast3D
 
 func create() -> void:
 	var box = box_scene_holder.create_instance()
@@ -20,5 +21,7 @@ func _process(delta: float) -> void:
 	if not Input.is_action_just_pressed("box_action"):
 		return
 	if box_weilder.has_box():
+		return
+	if ray_cast.is_colliding() and ray_cast.get_collider() is Box:
 		return
 	create()

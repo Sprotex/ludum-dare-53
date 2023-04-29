@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://byj8jn5wgprlq"]
+[gd_scene load_steps=13 format=3 uid="uid://byj8jn5wgprlq"]
 
 [ext_resource type="Script" path="res://blocks/character/player/PlayerMoveInput.gd" id="1_1u0jw"]
 [ext_resource type="Script" path="res://blocks/character/Walking.gd" id="2_x5uh0"]
@@ -8,10 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://kjih6718j3jp" path="res://blocks/box/box.tscn" id="6_fxagx"]
 [ext_resource type="Script" path="res://blocks/character/player/BoxCreator.gd" id="7_31ncr"]
 [ext_resource type="Script" path="res://blocks/character/player/BoxThrower.gd" id="8_14uhn"]
+[ext_resource type="Script" path="res://blocks/character/player/BoxPicker.gd" id="9_x42qx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6vbtk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hsq3r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f6rpv"]
+size = Vector3(0.6, 0.6, 0.6)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -58,13 +62,30 @@ body = NodePath("../..")
 script = ExtResource("5_wy7pc")
 box_scene = ExtResource("6_fxagx")
 
-[node name="BoxCreator" type="Node" parent="BoxLogic" node_paths=PackedStringArray("box_weilder", "box_scene_holder", "body")]
+[node name="BoxCreator" type="Node" parent="BoxLogic" node_paths=PackedStringArray("box_weilder", "box_scene_holder", "body", "ray_cast")]
 script = ExtResource("7_31ncr")
 box_weilder = NodePath("../BoxWeilder")
 box_scene_holder = NodePath("../BoxSceneHolder")
 body = NodePath("../..")
+ray_cast = NodePath("../BoxPicker/RayCast3D")
 
 [node name="BoxThrower" type="Node" parent="BoxLogic" node_paths=PackedStringArray("box_weilder", "body")]
 script = ExtResource("8_14uhn")
 box_weilder = NodePath("../BoxWeilder")
 body = NodePath("../..")
+
+[node name="BoxPicker" type="Node3D" parent="BoxLogic" node_paths=PackedStringArray("box_weilder", "ray_cast", "shape_cast")]
+script = ExtResource("9_x42qx")
+box_weilder = NodePath("../BoxWeilder")
+ray_cast = NodePath("RayCast3D")
+shape_cast = NodePath("ShapeCast3D")
+
+[node name="RayCast3D" type="RayCast3D" parent="BoxLogic/BoxPicker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+exclude_parent = false
+target_position = Vector3(0, 0, -1.5)
+collision_mask = 3
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="BoxLogic/BoxPicker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
+shape = SubResource("BoxShape3D_f6rpv")
