@@ -15,13 +15,13 @@
 - progression type:
   - endless
   - levels
-    - cannot do levels very well if the goal is to have fun shooting
+	- cannot do levels very well if the goal is to have fun shooting
 - dont care about the story at all, mechanics are supposed to be the fun part
 - controller support is important
 - platforming?, focus on action
   - this would dictate side scroller maybe?
   - how would top down platformer look like?
-    - oldschool Zelda
+	- oldschool Zelda
 - no mouse input except start button (but that could also be pressed by keyboard/controller)
 - 3D? it will feel cheap, but it has the most potential
   - keep in mind for after jam version
@@ -32,21 +32,21 @@
 ## Package man:
 - packages as abilities:
   - multiple types of packages
-    - timed grappling hook
-    - flail/pickupable projectile
-    - life package
-    - movement package
-    - goal package?
-    - tower defense package?
-    - package recall?
-    - time stopping package?
-    - mine package: after detonating it puts itself on cooldown, then reactivates itself
-    - teleport package - maybe not, action is focus
+	- timed grappling hook
+	- flail/pickupable projectile
+	- life package
+	- movement package
+	- goal package?
+	- tower defense package?
+	- package recall?
+	- time stopping package?
+	- mine package: after detonating it puts itself on cooldown, then reactivates itself
+	- teleport package - maybe not, action is focus
   - package upgrades:
-    - recall: returns package fast/instantly, no need to physically pick them up
+	- recall: returns package fast/instantly, no need to physically pick them up
   - package limit:
-    - either certain amount of packages can be in the level
-    - or every package type can be present in level only once
+	- either certain amount of packages can be in the level
+	- or every package type can be present in level only once
   - maybe
 - idea: each package deals damage, only heavy damage package does something extra
 
@@ -57,7 +57,7 @@
   - package unlocks? (rather not, but seems obvious)
   - enemies: design, logic, movement
   - package combos?
-    - a lot of work cut out for me
+	- a lot of work cut out for me
 
 - intro comic? a lot of work, short gameplay, maybe post jam
 - replayability? 
@@ -81,7 +81,7 @@
 - every card is a package
 - indirect combat, you attack territories
   - multiple possible design paths:
-    - who deals the last damage wins
-    - who deals the most damage wins (with packages that turn allegiance around)
+	- who deals the last damage wins
+	- who deals the most damage wins (with packages that turn allegiance around)
 - getting a territory unlocks cards
 - who wins a board wins the game
