@@ -50,24 +50,32 @@ shape = SubResource("WorldBoundaryShape3D_xpx8o")
 
 [node name="Barrier1" type="StaticBody3D" parent="Static/Collision"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 30)
+collision_layer = 16
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Collision/Barrier1"]
 shape = SubResource("WorldBoundaryShape3D_xpx8o")
 
 [node name="Barrier2" type="StaticBody3D" parent="Static/Collision"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -30)
+collision_layer = 16
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Collision/Barrier2"]
 shape = SubResource("WorldBoundaryShape3D_xpx8o")
 
 [node name="Barrier3" type="StaticBody3D" parent="Static/Collision"]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 30, 0, -1.31134e-06)
+collision_layer = 16
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Collision/Barrier3"]
 shape = SubResource("WorldBoundaryShape3D_xpx8o")
 
 [node name="Barrier4" type="StaticBody3D" parent="Static/Collision"]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -30, 0, 1.31134e-06)
+collision_layer = 16
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Collision/Barrier4"]
 shape = SubResource("WorldBoundaryShape3D_xpx8o")
