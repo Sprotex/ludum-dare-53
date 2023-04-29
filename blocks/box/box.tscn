@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://sbw2jbjnjm87"]
+[gd_scene load_steps=4 format=3 uid="uid://kjih6718j3jp"]
 
-[ext_resource type="Script" path="res://box/Box.gd" id="1_rodnd"]
+[ext_resource type="Script" path="res://blocks/box/Box.gd" id="1_cpfrd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_relkl"]
 
@@ -10,7 +10,7 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 freeze = true
 freeze_mode = 1
-script = ExtResource("1_rodnd")
+script = ExtResource("1_cpfrd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_relkl")

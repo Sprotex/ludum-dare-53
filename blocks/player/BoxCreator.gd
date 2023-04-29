@@ -15,4 +15,4 @@ func _process(delta: float) -> void:
 		return
 	if box_weilder.has_box():
 		return
-	create()
+	create.call_deferred()
