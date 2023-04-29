@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://p75r86l51kxp"]
+[gd_scene load_steps=11 format=3 uid="uid://p75r86l51kxp"]
 
+[ext_resource type="Script" path="res://blocks/player/MoveInput.gd" id="1_fancb"]
 [ext_resource type="Script" path="res://blocks/player/walking.gd" id="1_rb7po"]
 [ext_resource type="Script" path="res://blocks/player/BoxWeilder.gd" id="2_nvbw7"]
+[ext_resource type="Script" path="res://blocks/player/RotationAligner.gd" id="3_bksdm"]
 [ext_resource type="Script" path="res://blocks/player/BoxSceneHolder.gd" id="3_rn3dv"]
 [ext_resource type="PackedScene" uid="uid://kjih6718j3jp" path="res://blocks/box/box.tscn" id="4_dpmvk"]
 [ext_resource type="Script" path="res://blocks/player/BoxCreator.gd" id="5_dmfag"]
@@ -14,13 +16,6 @@
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 5, 9, 5)
-doppler_tracking = 1
-projection = 1
-fov = 37.8493
-size = 15.0
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_6vbtk")
 
@@ -28,16 +23,30 @@ shape = SubResource("CapsuleShape3D_6vbtk")
 mesh = SubResource("CapsuleMesh_hsq3r")
 skeleton = NodePath("../..")
 
-[node name="Walking" type="Node" parent="." node_paths=PackedStringArray("body", "camera")]
+[node name="Nose" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.251765, 0, 0, 0, 0.0881899, 0, 0, 0, 0.364906, 0, 0.536, -0.5)
+mesh = SubResource("CapsuleMesh_hsq3r")
+skeleton = NodePath("../..")
+
+[node name="MoveInput" type="Node" parent="."]
+script = ExtResource("1_fancb")
+
+[node name="Walking" type="Node" parent="." node_paths=PackedStringArray("body", "move_input")]
 script = ExtResource("1_rb7po")
 body = NodePath("..")
-camera = NodePath("../Camera3D")
 speed = 15.0
+move_input = NodePath("../MoveInput")
+
+[node name="RotationAligner" type="Node" parent="." node_paths=PackedStringArray("move_input", "body")]
+script = ExtResource("3_bksdm")
+move_input = NodePath("../MoveInput")
+alignment_speed = 0.1
+body = NodePath("..")
 
 [node name="BoxLogic" type="Node3D" parent="."]
 
 [node name="BoxWeilder" type="Node3D" parent="BoxLogic"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 script = ExtResource("2_nvbw7")
 
 [node name="BoxSceneHolder" type="Node" parent="BoxLogic"]

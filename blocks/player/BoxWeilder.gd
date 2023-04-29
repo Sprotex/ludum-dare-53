@@ -20,3 +20,4 @@ func set_box(box: Box) -> void:
 		box.position = position
 		add_child(box)
 	current_box = box
+	

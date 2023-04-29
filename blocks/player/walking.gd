@@ -1,9 +1,9 @@
 extends Node
 
 @export var body: CharacterBody3D
-@export var camera: Camera3D
 @export var speed := 5.0
 @export var jump_velocity := 4.5
+@export var move_input: MoveInput
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -19,11 +19,9 @@ func _handle_jump(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	_handle_gravity(delta)
 	_handle_jump(delta)
-	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	var right_direction = camera.transform.basis.x
-	var forward_direction = right_direction.cross(Vector3.UP)
-	var direction = (input_direction.x * right_direction + forward_direction * input_direction.y).normalized()
+	var direction = move_input.camera_transformed_direction
 	if direction:
+		direction = direction.normalized()
 		body.velocity.x = direction.x * speed
 		body.velocity.z = direction.z * speed
 	else:

@@ -10,10 +10,11 @@
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_xpx8o"]
 
-[node name="MainLevel" type="Node3D" node_paths=PackedStringArray("player", "boxes")]
+[node name="MainLevel" type="Node3D" node_paths=PackedStringArray("player", "boxes", "camera")]
 script = ExtResource("1_f3xqy")
 player = NodePath("Player")
 boxes = NodePath("Boxes")
+camera = NodePath("CameraRig/Camera3D")
 
 [node name="Static" type="Node3D" parent="."]
 
@@ -68,5 +69,20 @@ environment = ExtResource("6_fidnt")
 [node name="Boxes" type="Node3D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("7_vq8vl")]
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player"]
+remote_path = NodePath("../../CameraRig")
+update_rotation = false
+
+[node name="CameraRig" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 5, 9, 5)
+doppler_tracking = 1
+projection = 1
+current = true
+fov = 37.8493
+size = 15.0
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
