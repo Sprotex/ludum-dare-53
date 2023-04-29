@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://hd36wgmimmec"]
+[gd_scene load_steps=5 format=3 uid="uid://hd36wgmimmec"]
 
 [ext_resource type="Environment" uid="uid://dhvcx7ga4gqn1" path="res://environment/default_environment.tres" id="1_a50hs"]
+[ext_resource type="Material" uid="uid://ma3cfl75n5he" path="res://environment/grid_material.tres" id="1_u24ok"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_aw3qp"]
 size = Vector2(100, 100)
@@ -11,6 +12,7 @@ size = Vector2(100, 100)
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+material_override = ExtResource("1_u24ok")
 mesh = SubResource("QuadMesh_aw3qp")
 skeleton = NodePath("")
 
