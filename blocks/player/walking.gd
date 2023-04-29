@@ -26,7 +26,6 @@ func _handle_two_way_collision_coupling() -> void:
 		var local_position = body.global_position - position
 		collider.apply_impulse(-normal * inertia, local_position)
 		collider.apply_central_impulse(-normal * inertia * 0.5)
-		print(normal)
 
 
 func _handle_gravity(delta: float) -> void:
