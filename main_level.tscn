@@ -63,5 +63,3 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_re8lj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48514, 1, 14.1178)
-
-[editable path="Player"]

@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl4aal8trjgcm"]
+[gd_scene load_steps=8 format=3 uid="uid://dl4aal8trjgcm"]
 
 [ext_resource type="Script" path="res://player/walking.gd" id="1_6l78a"]
+[ext_resource type="Script" path="res://player/BoxWeilder.gd" id="2_yu8vk"]
+[ext_resource type="Script" path="res://player/BoxSceneHolder.gd" id="3_j6j62"]
+[ext_resource type="PackedScene" uid="uid://ctdrkok21fmk8" path="res://box/box.tscn" id="4_2dn4k"]
+[ext_resource type="Script" path="res://player/BoxCreator.gd" id="4_kgkdh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6vbtk"]
 
@@ -28,3 +32,20 @@ script = ExtResource("1_6l78a")
 body = NodePath("..")
 camera = NodePath("../Camera3D")
 speed = 15.0
+
+[node name="BoxLogic" type="Node3D" parent="."]
+
+[node name="BoxWeilder" type="Node3D" parent="BoxLogic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+script = ExtResource("2_yu8vk")
+
+[node name="BoxSceneHolder" type="Node" parent="BoxLogic"]
+script = ExtResource("3_j6j62")
+box_scene = ExtResource("4_2dn4k")
+
+[node name="BoxCreator" type="Node" parent="BoxLogic" node_paths=PackedStringArray("box_weilder", "box_scene_holder")]
+script = ExtResource("4_kgkdh")
+box_weilder = NodePath("../BoxWeilder")
+box_scene_holder = NodePath("../BoxSceneHolder")
+
+[node name="BoxThrower" type="Node" parent="BoxLogic"]
