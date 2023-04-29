@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://hd36wgmimmec"]
+[gd_scene load_steps=6 format=3 uid="uid://dcuaocntacvwm"]
 
 [ext_resource type="Environment" uid="uid://dhvcx7ga4gqn1" path="res://environment/default_environment.tres" id="1_a50hs"]
 [ext_resource type="Material" uid="uid://ma3cfl75n5he" path="res://environment/grid_material.tres" id="1_u24ok"]
+[ext_resource type="PackedScene" uid="uid://dl4aal8trjgcm" path="res://player/player.tscn" id="3_re8lj"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_aw3qp"]
 size = Vector2(100, 100)
@@ -10,23 +11,22 @@ size = Vector2(100, 100)
 
 [node name="MainLevel" type="Node3D"]
 
-[node name="Floor" type="MeshInstance3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 material_override = ExtResource("1_u24ok")
 mesh = SubResource("QuadMesh_aw3qp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_hn2ly")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 5, 10, 5)
-current = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_a50hs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.586924, 0.809642, 0, -0.809642, -0.586924, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, -0.586924, 0.809642, 0, -0.809642, -0.586924, 15.4268, 4, -9.73874)
+
+[node name="Player" parent="." instance=ExtResource("3_re8lj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48514, 1, 14.1178)
