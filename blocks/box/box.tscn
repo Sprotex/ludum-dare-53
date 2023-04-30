@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://kjih6718j3jp"]
+[gd_scene load_steps=7 format=3 uid="uid://kjih6718j3jp"]
 
 [ext_resource type="Script" path="res://blocks/box/Box.gd" id="1_cpfrd"]
+[ext_resource type="PackedScene" uid="uid://dg6s8th0nag6t" path="res://blocks/box/ExplosionGraphics.tscn" id="2_orq0f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8yf8"]
 albedo_color = Color(0.717647, 0.380392, 0, 1)
@@ -23,6 +24,7 @@ mesh = NodePath("MeshInstance3D")
 timer = NodePath("Timer")
 explosion_sphere = NodePath("Area3D")
 floored_material = SubResource("StandardMaterial3D_m8yf8")
+explosion_particles = ExtResource("2_orq0f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

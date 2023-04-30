@@ -6,6 +6,7 @@ class_name Box
 @export var timer: Timer
 @export var explosion_sphere: Area3D
 @export var floored_material: Material
+@export var explosion_particles: PackedScene
 
 var was_refrozen_since_instantiation = false
 
@@ -48,6 +49,9 @@ func _explode() -> void:
       continue
     body.velocity += impulse
   GameEvents.on_box_exploded.emit(global_position)
+  var explosion = explosion_particles.instantiate()
+  get_parent().add_child(explosion)
+  explosion.global_position = global_position
   queue_free()
 
 
