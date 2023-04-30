@@ -18,7 +18,7 @@ func create() -> void:
   GameEvents.on_box_created.emit(box_weilder.global_position)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
   if not Input.is_action_just_pressed("box_action"):
     return
   if box_weilder.has_box():
