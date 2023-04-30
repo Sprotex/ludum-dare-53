@@ -88,3 +88,9 @@ func _ready():
   GameEvents.on_box_collided.connect(play_box_impact)
   GameEvents.on_package_delivered.connect(play_mood_enemy_box_received)
   GameEvents.on_enemy_spawned.connect(play_mood_enemy_spawn, CONNECT_DEFERRED)
+  GameEvents.on_restarted.connect(kill_all_sounds)
+
+
+func kill_all_sounds() -> void:
+  audio_players.kill_all_sounds()
+  important_audio_players.kill_all_sounds()

@@ -5,6 +5,10 @@ class_name MoveInput
 var is_inverted = false
 var direction = Vector3.ZERO
 
+func disable() -> void:
+	direction = Vector3.ZERO
+	set_process(false)
+
 
 func _set_direction() -> void:
 	direction = Vector3.ZERO

@@ -38,3 +38,8 @@ func play_important_sound(audio_stream: AudioStream, node: Node3D) -> void:
   remote_transform.use_global_coordinates = true
   remote_transform.remote_path = current_player.get_path()
   node.add_child(remote_transform)
+
+
+func kill_all_sounds() -> void:
+  for child in get_children():
+    child.stop()

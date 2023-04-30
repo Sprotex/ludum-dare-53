@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfmcqj0v4pxbm"]
+[gd_scene load_steps=14 format=3 uid="uid://bfmcqj0v4pxbm"]
 
 [ext_resource type="Script" path="res://blocks/character/enemy/EnemyMoveInput.gd" id="1_lqrnv"]
 [ext_resource type="PackedScene" uid="uid://lpyorcs5g8jc" path="res://blocks/character/block_dude.tscn" id="1_xo7jc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://blocks/character/enemy/VisibilityResolver.gd" id="6_42akm"]
 [ext_resource type="Script" path="res://blocks/character/enemy/EnemySounds.gd" id="9_idw0k"]
 [ext_resource type="Script" path="res://blocks/character/enemy/EnemyMaterial.gd" id="10_jn0t5"]
+[ext_resource type="Script" path="res://blocks/character/enemy/EnemyArea.gd" id="11_brmu4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bym5w"]
 
@@ -79,5 +80,14 @@ box_receiver = NodePath("../BoxLogic/BoxReceiver")
 script = ExtResource("10_jn0t5")
 block_dude_relay = NodePath("../block_dude")
 material = SubResource("StandardMaterial3D_e4ffw")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+script = ExtResource("11_brmu4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_bym5w")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="VisibleOnScreenNotifier3D/VisibilityResolver" method="_on_visible_on_screen_notifier_3d_screen_exited"]

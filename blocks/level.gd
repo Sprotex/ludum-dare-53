@@ -8,3 +8,8 @@ extends Node3D
 
 func _on_tree_entered():
 	LevelReference.level = self
+
+
+func _on_restart_button_pressed():
+	GameEvents.on_restarted.emit()
+	get_tree().reload_current_scene()

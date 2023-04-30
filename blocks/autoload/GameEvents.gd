@@ -8,3 +8,5 @@ signal on_box_collided(position: Vector3, velocity: Vector3)
 signal on_box_created(position: Vector3)
 signal on_box_thrown(position: Vector3)
 signal on_box_exploded(position: Vector3)
+signal on_restarted
+signal on_all_health_lost

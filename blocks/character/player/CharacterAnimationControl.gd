@@ -1,5 +1,7 @@
 extends Node
 
+class_name CharacterAnimationControl
+
 @export var animation_relay: BlockDudeRelay
 @export var box_weilder: BoxWeilder
 @export var body: CharacterBody3D
