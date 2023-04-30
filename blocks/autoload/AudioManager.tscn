@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://cslai2ocp2ih5"]
 
 [ext_resource type="Script" path="res://blocks/autoload/AudioManager.gd" id="1_dmwgg"]
-[ext_resource type="AudioStream" uid="uid://h8wgkrmf3p7a" path="res://assets/audio/step/step1.ogg" id="2_m2757"]
-[ext_resource type="AudioStream" uid="uid://bndrsimgfyp6n" path="res://assets/audio/step/step2.ogg" id="3_188hn"]
-[ext_resource type="AudioStream" uid="uid://oapswia7v0ck" path="res://assets/audio/step/step3.ogg" id="4_qvb4t"]
-[ext_resource type="AudioStream" uid="uid://dl6e7gyog8x1c" path="res://assets/audio/step/step4.ogg" id="5_7hccr"]
-[ext_resource type="AudioStream" uid="uid://bo2solpah10gj" path="res://assets/audio/step/step5.ogg" id="6_hgfw0"]
-[ext_resource type="AudioStream" uid="uid://diapun8segyuo" path="res://assets/audio/step/step6.ogg" id="7_0g1jm"]
-[ext_resource type="AudioStream" uid="uid://byybbo0py0g0p" path="res://assets/audio/step/step7.ogg" id="8_eptcy"]
-[ext_resource type="AudioStream" uid="uid://7cybxpun2klr" path="res://assets/audio/step/step8.ogg" id="9_apw25"]
+[ext_resource type="AudioStream" uid="uid://2kmfrwagi74f" path="res://assets/audio/step/step-01.ogg" id="2_vdvxa"]
+[ext_resource type="AudioStream" uid="uid://hq30lp16f6bi" path="res://assets/audio/step/step-02.ogg" id="3_bwprm"]
+[ext_resource type="AudioStream" uid="uid://m0o035tg3imt" path="res://assets/audio/step/step-03.ogg" id="4_7hdsb"]
+[ext_resource type="AudioStream" uid="uid://beffqy821rlld" path="res://assets/audio/step/step-04.ogg" id="5_q8y3w"]
+[ext_resource type="AudioStream" uid="uid://dtl0ddv6crub1" path="res://assets/audio/step/step-05.ogg" id="6_xnu3t"]
+[ext_resource type="AudioStream" uid="uid://d5ep4a10o8uj" path="res://assets/audio/step/step-06.ogg" id="7_56f4y"]
+[ext_resource type="AudioStream" uid="uid://d3tmccs31tgef" path="res://assets/audio/step/step-07.ogg" id="8_kh3j4"]
+[ext_resource type="AudioStream" uid="uid://ch38y004i6hbb" path="res://assets/audio/step/step-08.ogg" id="9_1wk37"]
 [ext_resource type="Script" path="res://blocks/autoload/AudioPlayers.gd" id="10_uus7o"]
 
 [node name="AudioManager" type="Node3D" node_paths=PackedStringArray("music_player", "audio_players", "important_audio_players")]
@@ -16,7 +16,7 @@ script = ExtResource("1_dmwgg")
 music_player = NodePath("MusicPlayer")
 audio_players = NodePath("AudioPlayers")
 important_audio_players = NodePath("ImporantAudioPlayers")
-steps = Array[AudioStream]([ExtResource("2_m2757"), ExtResource("3_188hn"), ExtResource("4_qvb4t"), ExtResource("5_7hccr"), ExtResource("6_hgfw0"), ExtResource("7_0g1jm"), ExtResource("8_eptcy"), ExtResource("9_apw25")])
+steps = Array[AudioStream]([ExtResource("2_vdvxa"), ExtResource("3_bwprm"), ExtResource("4_7hdsb"), ExtResource("5_q8y3w"), ExtResource("6_xnu3t"), ExtResource("7_56f4y"), ExtResource("8_kh3j4"), ExtResource("9_1wk37")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 
