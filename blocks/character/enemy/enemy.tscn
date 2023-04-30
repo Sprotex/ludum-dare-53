@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bfmcqj0v4pxbm"]
+[gd_scene load_steps=15 format=3 uid="uid://bfmcqj0v4pxbm"]
 
 [ext_resource type="Script" path="res://blocks/character/enemy/EnemyMoveInput.gd" id="1_lqrnv"]
 [ext_resource type="PackedScene" uid="uid://lpyorcs5g8jc" path="res://blocks/character/block_dude.tscn" id="1_xo7jc"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://blocks/character/enemy/EnemySounds.gd" id="9_idw0k"]
 [ext_resource type="Script" path="res://blocks/character/enemy/EnemyMaterial.gd" id="10_jn0t5"]
 [ext_resource type="Script" path="res://blocks/character/enemy/EnemyArea.gd" id="11_brmu4"]
+[ext_resource type="Script" path="res://blocks/character/enemy/ExplosionFlight.gd" id="12_yhu77"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bym5w"]
 
@@ -89,5 +90,9 @@ script = ExtResource("11_brmu4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CapsuleShape3D_bym5w")
+
+[node name="ExplosionFlight" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("12_yhu77")
+body = NodePath("..")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="VisibleOnScreenNotifier3D/VisibilityResolver" method="_on_visible_on_screen_notifier_3d_screen_exited"]

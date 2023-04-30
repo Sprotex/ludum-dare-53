@@ -1,45 +1,43 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg6s8th0nag6t"]
+[gd_scene load_steps=5 format=3 uid="uid://dg6s8th0nag6t"]
 
 [ext_resource type="Script" path="res://blocks/box/ExplosionGraphics.gd" id="1_liv4s"]
 
-[sub_resource type="Gradient" id="Gradient_fdemm"]
-offsets = PackedFloat32Array(0.252101, 1)
-colors = PackedColorArray(0.20868, 2.00043e-07, 2.40654e-08, 1, 0.0739377, 0.0739378, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_n3bha"]
-gradient = SubResource("Gradient_fdemm")
-width = 8
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j0kx7"]
-lifetime_randomness = 0.91
-emission_shape = 1
-emission_sphere_radius = 0.5
-direction = Vector3(0, 1, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 15.0
-color_initial_ramp = SubResource("GradientTexture1D_n3bha")
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_crt4q"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_upd52"]
 shading_mode = 0
 vertex_color_use_as_albedo = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[sub_resource type="QuadMesh" id="QuadMesh_7au1k"]
-material = SubResource("ORMMaterial3D_crt4q")
-size = Vector2(0.1, 0.1)
+[sub_resource type="QuadMesh" id="QuadMesh_e7x67"]
+size = Vector2(0.3, 0.3)
+
+[sub_resource type="Gradient" id="Gradient_fdemm"]
+offsets = PackedFloat32Array(0.246851, 1)
+colors = PackedColorArray(0.699195, 3.33305e-06, 1.92523e-07, 1, 0.415649, 0.415649, 5.77569e-07, 1)
 
 [node name="ExplosionGraphics" type="Node3D"]
 script = ExtResource("1_liv4s")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-amount = 600
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_upd52")
+amount = 100
 lifetime = 2.0
-one_shot = true
 explosiveness = 1.0
-transform_align = 1
-process_material = SubResource("ParticleProcessMaterial_j0kx7")
-draw_pass_1 = SubResource("QuadMesh_7au1k")
+lifetime_randomness = 0.91
+fixed_fps = 30
+local_coords = true
+mesh = SubResource("QuadMesh_e7x67")
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+color_initial_ramp = SubResource("Gradient_fdemm")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

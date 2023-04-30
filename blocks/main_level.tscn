@@ -141,18 +141,20 @@ script = ExtResource("11_e6tup")
 restart_menu = NodePath("RestartMenu")
 score_label = NodePath("Score/Label")
 
-[node name="Score" type="Control" parent="UI"]
+[node name="Score" type="MarginContainer" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
 
 [node name="Label" type="Label" parent="UI/Score"]
-layout_mode = 0
-offset_right = 300.0
-offset_bottom = 84.0
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 text = "Boxes delivered: 123456789"
 label_settings = SubResource("LabelSettings_hygtj")
 
@@ -186,6 +188,7 @@ offset_right = 139.0
 offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 33
 text = "Restart"
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

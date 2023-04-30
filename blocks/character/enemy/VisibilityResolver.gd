@@ -5,7 +5,7 @@ extends Node
 
 
 func _on_visible_on_screen_notifier_3d_screen_exited():
-  if not box_weilder.has_box():
+  if not box_weilder.has_box() or body.is_on_floor():
     return
   LevelReference.level.spawner.spawn()
   body.queue_free()
