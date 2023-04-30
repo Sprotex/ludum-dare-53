@@ -91,7 +91,4 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
 shape = SubResource("BoxShape3D_f6rpv")
 
-[node name="AudioListener3D" type="AudioListener3D" parent="."]
-current = true
-
 [editable path="block_dude"]

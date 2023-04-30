@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cslai2ocp2ih5"]
+[gd_scene load_steps=14 format=3 uid="uid://cslai2ocp2ih5"]
 
 [ext_resource type="Script" path="res://blocks/autoload/AudioManager.gd" id="1_dmwgg"]
 [ext_resource type="AudioStream" uid="uid://2kmfrwagi74f" path="res://assets/audio/step/step-01.ogg" id="2_vdvxa"]
@@ -9,7 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://d5ep4a10o8uj" path="res://assets/audio/step/step-06.ogg" id="7_56f4y"]
 [ext_resource type="AudioStream" uid="uid://d3tmccs31tgef" path="res://assets/audio/step/step-07.ogg" id="8_kh3j4"]
 [ext_resource type="AudioStream" uid="uid://ch38y004i6hbb" path="res://assets/audio/step/step-08.ogg" id="9_1wk37"]
+[ext_resource type="AudioStream" uid="uid://bsfkssnok2oqn" path="res://assets/audio/enemy1.ogg" id="10_mvhaj"]
 [ext_resource type="Script" path="res://blocks/autoload/AudioPlayers.gd" id="10_uus7o"]
+[ext_resource type="AudioStream" uid="uid://cylihmrm1548l" path="res://assets/audio/enemy2.ogg" id="11_ej8ok"]
+[ext_resource type="AudioStream" uid="uid://vy52q732x6sq" path="res://assets/audio/enemy3.ogg" id="12_5qsmd"]
 
 [node name="AudioManager" type="Node3D" node_paths=PackedStringArray("music_player", "audio_players", "important_audio_players")]
 script = ExtResource("1_dmwgg")
@@ -17,6 +20,9 @@ music_player = NodePath("MusicPlayer")
 audio_players = NodePath("AudioPlayers")
 important_audio_players = NodePath("ImporantAudioPlayers")
 steps = Array[AudioStream]([ExtResource("2_vdvxa"), ExtResource("3_bwprm"), ExtResource("4_7hdsb"), ExtResource("5_q8y3w"), ExtResource("6_xnu3t"), ExtResource("7_56f4y"), ExtResource("8_kh3j4"), ExtResource("9_1wk37")])
+happy_enemy_spawn_sounds = Array[AudioStream]([ExtResource("10_mvhaj")])
+weird_enemy_spawn_sounds = Array[AudioStream]([ExtResource("11_ej8ok")])
+creepy_enemy_spawn_sounds = Array[AudioStream]([ExtResource("12_5qsmd")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 

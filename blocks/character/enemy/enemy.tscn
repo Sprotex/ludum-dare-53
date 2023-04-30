@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfmcqj0v4pxbm"]
+[gd_scene load_steps=12 format=3 uid="uid://bfmcqj0v4pxbm"]
 
 [ext_resource type="Script" path="res://blocks/character/enemy/EnemyMoveInput.gd" id="1_lqrnv"]
 [ext_resource type="PackedScene" uid="uid://lpyorcs5g8jc" path="res://blocks/character/block_dude.tscn" id="1_xo7jc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://blocks/character/player/BoxWeilder.gd" id="4_6dx1p"]
 [ext_resource type="Script" path="res://blocks/character/enemy/BoxReceiver.gd" id="5_v101f"]
 [ext_resource type="Script" path="res://blocks/character/enemy/VisibilityResolver.gd" id="6_42akm"]
+[ext_resource type="Script" path="res://blocks/character/enemy/EnemySounds.gd" id="9_idw0k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tkgs"]
 albedo_color = Color(1, 0, 0, 1)
@@ -70,6 +71,10 @@ move_input = NodePath("../../EnemyMoveInput")
 script = ExtResource("6_42akm")
 box_weilder = NodePath("../../BoxLogic/BoxWeilder")
 body = NodePath("../..")
+
+[node name="EnemySounds" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("9_idw0k")
+body = NodePath("..")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="VisibleOnScreenNotifier3D/VisibilityResolver" method="_on_visible_on_screen_notifier_3d_screen_exited"]
 
