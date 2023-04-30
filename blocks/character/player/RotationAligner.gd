@@ -14,7 +14,8 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var body_direction = -body.transform.basis.z
-	var angle = body_direction.signed_angle_to(input_direction, Vector3.UP)
-	if abs(angle) > alignment_speed:
-		angle = sign(angle) * alignment_speed
+	var angle = body_direction.signed_angle_to(body.velocity, Vector3.UP)
+	var alignment_scaling = alignment_speed * delta
+	if abs(angle) > alignment_scaling:
+		angle = sign(angle) * alignment_scaling
 	body.rotate_y(angle)

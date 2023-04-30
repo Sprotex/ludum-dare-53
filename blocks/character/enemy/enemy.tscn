@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfmcqj0v4pxbm"]
+[gd_scene load_steps=13 format=3 uid="uid://bfmcqj0v4pxbm"]
 
 [ext_resource type="Script" path="res://blocks/character/enemy/EnemyMoveInput.gd" id="1_lqrnv"]
 [ext_resource type="PackedScene" uid="uid://lpyorcs5g8jc" path="res://blocks/character/block_dude.tscn" id="1_xo7jc"]
@@ -9,11 +9,12 @@
 [ext_resource type="Script" path="res://blocks/character/enemy/BoxReceiver.gd" id="5_v101f"]
 [ext_resource type="Script" path="res://blocks/character/enemy/VisibilityResolver.gd" id="6_42akm"]
 [ext_resource type="Script" path="res://blocks/character/enemy/EnemySounds.gd" id="9_idw0k"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tkgs"]
-albedo_color = Color(1, 0, 0, 1)
+[ext_resource type="Script" path="res://blocks/character/enemy/EnemyMaterial.gd" id="10_jn0t5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bym5w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4ffw"]
+albedo_color = Color(1, 0, 0, 1)
 
 [node name="Enemy" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -22,9 +23,6 @@ collision_mask = 15
 
 [node name="block_dude" parent="." instance=ExtResource("1_xo7jc")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
-
-[node name="Final" parent="block_dude/Armature/Skeleton3D" index="0"]
-material_override = SubResource("StandardMaterial3D_2tkgs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_bym5w")
@@ -77,6 +75,9 @@ script = ExtResource("9_idw0k")
 body = NodePath("..")
 box_receiver = NodePath("../BoxLogic/BoxReceiver")
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="VisibleOnScreenNotifier3D/VisibilityResolver" method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[node name="EnemyMaterial" type="Node" parent="." node_paths=PackedStringArray("block_dude_relay")]
+script = ExtResource("10_jn0t5")
+block_dude_relay = NodePath("../block_dude")
+material = SubResource("StandardMaterial3D_e4ffw")
 
-[editable path="block_dude"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="VisibleOnScreenNotifier3D/VisibilityResolver" method="_on_visible_on_screen_notifier_3d_screen_exited"]

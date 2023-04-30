@@ -1,6 +1,6 @@
 extends Node
 
-@export var animation_relay: AnimationPlayerRelay
+@export var animation_relay: BlockDudeRelay
 @export var box_weilder: BoxWeilder
 @export var body: CharacterBody3D
 @export var walking: Walking

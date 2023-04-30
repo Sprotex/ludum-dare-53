@@ -14,9 +14,10 @@ _data = {
 "run": ExtResource("6_lg35v")
 }
 
-[node name="block_dude" node_paths=PackedStringArray("animation_tree") instance=ExtResource("1_bbx8a")]
+[node name="block_dude" node_paths=PackedStringArray("animation_tree", "mesh") instance=ExtResource("1_bbx8a")]
 script = ExtResource("2_o82hq")
 animation_tree = NodePath("AnimationTree")
+mesh = NodePath("Armature/Skeleton3D/Final")
 
 [node name="Leg" parent="." index="0"]
 visible = false
@@ -25,6 +26,7 @@ visible = false
 visible = false
 
 [node name="Skeleton3D" parent="Armature" index="1"]
+bones/3/rotation = Quaternion(0.641963, 0.296452, 0.296451, 0.641963)
 bones/5/position = Vector3(4.67959e-14, 1.11016, 1.96393e-07)
 bones/6/position = Vector3(-0.490527, 0.783385, 1.32173e-07)
 bones/6/rotation = Quaternion(-0.0148074, 0.0558818, 0.99509, 0.0803303)
