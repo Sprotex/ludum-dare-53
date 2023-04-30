@@ -5,6 +5,7 @@ class_name Box
 @export var mesh: MeshInstance3D
 @export var timer: Timer
 @export var explosion_sphere: Area3D
+@export var floored_material: Material
 
 var was_refrozen_since_instantiation = false
 
@@ -27,6 +28,7 @@ func _on_sleeping_state_changed():
     return
   if freeze:
     return
+  mesh.material_override = floored_material
   was_refrozen_since_instantiation = true
 
 func _explode() -> void:
