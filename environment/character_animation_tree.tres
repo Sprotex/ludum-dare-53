@@ -28,4 +28,4 @@ nodes/carry/position = Vector2(300, 1160)
 nodes/movement/node = SubResource("AnimationNodeBlend2_jgpfu")
 nodes/movement/position = Vector2(80, 1180)
 nodes/output/position = Vector2(520, 1160)
-node_connections = [&"output", 0, &"carry", &"movement", 0, &"Animation 2", &"movement", 1, &"Animation 3", &"carry", 0, &"movement", &"carry", 1, &"Animation"]
+node_connections = [&"output", 0, &"carry", &"carry", 0, &"movement", &"carry", 1, &"Animation", &"movement", 0, &"Animation 2", &"movement", 1, &"Animation 3"]

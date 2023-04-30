@@ -19,6 +19,7 @@ extends Node3D
 @export var box_throw_sounds: Array[AudioStream]
 @export var box_small_impacts: Array[AudioStream]
 @export var box_big_impacts: Array[AudioStream]
+@export var box_exploded_sounds: Array[AudioStream]
 
 @export var jump_sounds: Array[AudioStream]
 
@@ -83,6 +84,7 @@ func _ready():
   attach_sound_to_event(GameEvents.on_box_thrown, box_throw_sounds)
   attach_sound_to_event(GameEvents.on_box_created, box_created_sounds)
   attach_sound_to_event(GameEvents.on_jumped, jump_sounds)
+  attach_sound_to_event(GameEvents.on_box_exploded, box_exploded_sounds)
   GameEvents.on_box_collided.connect(play_box_impact)
   GameEvents.on_package_delivered.connect(play_mood_enemy_box_received)
   GameEvents.on_enemy_spawned.connect(play_mood_enemy_spawn, CONNECT_DEFERRED)

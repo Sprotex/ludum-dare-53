@@ -39,6 +39,7 @@ func _explode() -> void:
       body.apply_central_impulse(impulse)
       continue
     body.velocity += impulse
+  GameEvents.on_box_exploded.emit(global_position)
   queue_free()
 
 
