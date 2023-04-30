@@ -1,0 +1,31 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=6 format=3 uid="uid://c522xdvkywytx"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mvlc5"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ex8k"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rsf7d"]
+animation = &"carry"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_l0lrb"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:arm.l", "Armature/Skeleton3D:arm.r"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_jgpfu"]
+
+[resource]
+graph_offset = Vector2(-249.516, 1341.45)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_rsf7d")
+nodes/Animation/position = Vector2(80, 1380)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_mvlc5")
+"nodes/Animation 2/position" = Vector2(-160, 1120)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_6ex8k")
+"nodes/Animation 3/position" = Vector2(-160, 1240)
+nodes/carry/node = SubResource("AnimationNodeBlend2_l0lrb")
+nodes/carry/position = Vector2(300, 1160)
+nodes/movement/node = SubResource("AnimationNodeBlend2_jgpfu")
+nodes/movement/position = Vector2(80, 1180)
+nodes/output/position = Vector2(520, 1160)
+node_connections = [&"output", 0, &"carry", &"movement", 0, &"Animation 2", &"movement", 1, &"Animation 3", &"carry", 0, &"movement", &"carry", 1, &"Animation"]

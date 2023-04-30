@@ -1,29 +1,17 @@
 extends Node
 
 @export var animation_relay: AnimationPlayerRelay
-@export var move_input: MoveInput
 @export var box_weilder: BoxWeilder
+@export var body: CharacterBody3D
+@export var walking: Walking
+@export var default_animation_blend_speed = 0.2
 
-@onready var animation_player = animation_relay.animation_player
+@onready var animation_tree = animation_relay.animation_tree
 
-const RUN_ANIMATION = "run"
-const IDLE_ANIMATION = "idle"
-
-func _handle_changing_animation(next_animation: String) -> void:
-  var current_animation = animation_player.current_animation
-  if current_animation == next_animation:
-    return
-  animation_player.play(next_animation)
-  
-
-func _handle_movement() -> void:
-  if move_input.direction == null:
-    return
-  if move_input.direction.length_squared() <= 0.01:
-    _handle_changing_animation(IDLE_ANIMATION)
-    return
-  _handle_changing_animation(RUN_ANIMATION)
+func _handle_run_parameter() -> void:
+  var animation_speed = remap(body.velocity.length(), 0.0, walking.speed, 0.0, 1.0)
+  animation_tree.set("parameters/movement/blend_amount", animation_speed)
   
 
 func _process(_delta: float) -> void:
-  _handle_movement()
+  _handle_run_parameter()

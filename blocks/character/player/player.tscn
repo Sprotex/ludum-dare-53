@@ -25,20 +25,15 @@ collision_mask = 19
 [node name="block_dude" parent="." instance=ExtResource("1_ftvrs")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
 
-[node name="Skeleton3D" parent="block_dude/Armature" index="1"]
-bones/5/position = Vector3(6.20183e-14, 1.11016, 1.96393e-07)
-bones/6/position = Vector3(0.490527, 0.783385, -1.08132e-07)
-bones/6/rotation = Quaternion(-1.4523e-07, -2.19303e-07, 0.911045, -0.412308)
-bones/7/position = Vector3(-0.490527, 0.783385, 1.2577e-07)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_6vbtk")
 
-[node name="CharacterAnimationControl" type="Node" parent="." node_paths=PackedStringArray("animation_relay", "move_input", "box_weilder")]
+[node name="CharacterAnimationControl" type="Node" parent="." node_paths=PackedStringArray("animation_relay", "box_weilder", "body", "walking")]
 script = ExtResource("2_kgcjw")
 animation_relay = NodePath("../block_dude")
-move_input = NodePath("../PlayerMoveInput")
 box_weilder = NodePath("../BoxLogic/BoxWeilder")
+body = NodePath("..")
+walking = NodePath("../Walking")
 
 [node name="PlayerMoveInput" type="Node" parent="."]
 script = ExtResource("1_1u0jw")
@@ -46,8 +41,8 @@ script = ExtResource("1_1u0jw")
 [node name="Walking" type="Node" parent="." node_paths=PackedStringArray("body", "move_input")]
 script = ExtResource("2_x5uh0")
 body = NodePath("..")
-speed = 50.0
-acceleration = 30.0
+speed = 20.0
+acceleration = 60.0
 move_input = NodePath("../PlayerMoveInput")
 inertia = 0.3
 
