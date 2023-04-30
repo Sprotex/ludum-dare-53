@@ -17,7 +17,9 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-LevelReference="*res://blocks/autoload/level_reference.gd"
+GameEvents="*res://blocks/autoload/GameEvents.gd"
+LevelReference="*res://blocks/autoload/LevelReference.gd"
+AudioManager="*res://blocks/autoload/AudioManager.tscn"
 
 [input]
 
