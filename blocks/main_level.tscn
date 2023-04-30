@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dcuaocntacvwm"]
+[gd_scene load_steps=14 format=3 uid="uid://dcuaocntacvwm"]
 
 [ext_resource type="Script" path="res://blocks/level.gd" id="1_f3xqy"]
 [ext_resource type="Material" uid="uid://v3t4seacm44a" path="res://environment/unwalkable_grid_material.tres" id="2_blm38"]
@@ -13,6 +13,11 @@
 [ext_resource type="Script" path="res://blocks/UI.gd" id="11_e6tup"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_xpx8o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hygtj"]
+font_size = 38
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MainLevel" type="Node3D" node_paths=PackedStringArray("player", "boxes", "camera", "enemies", "spawner")]
 script = ExtResource("1_f3xqy")
@@ -125,7 +130,7 @@ remote_path = NodePath("../../PlayerFollowingRig")
 update_rotation = false
 update_scale = false
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("restart_menu")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("restart_menu", "score_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -134,11 +139,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_e6tup")
 restart_menu = NodePath("RestartMenu")
+score_label = NodePath("Score/Label")
 
 [node name="Score" type="Control" parent="UI"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Score"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 84.0
+text = "Boxes delivered: 123456789"
+label_settings = SubResource("LabelSettings_hygtj")
 
 [node name="RestartMenu" type="Control" parent="UI"]
 layout_mode = 1

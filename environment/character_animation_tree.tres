@@ -37,4 +37,4 @@ nodes/falling/position = Vector2(300, 940)
 nodes/movement/node = SubResource("AnimationNodeBlend2_jgpfu")
 nodes/movement/position = Vector2(80, 960)
 nodes/output/position = Vector2(700, 1160)
-node_connections = [&"output", 0, &"carry", &"carry", 0, &"falling", &"carry", 1, &"Animation", &"movement", 0, &"Animation 2", &"movement", 1, &"Animation 3", &"falling", 0, &"movement", &"falling", 1, &"Animation 4"]
+node_connections = [&"output", 0, &"carry", &"carry", 0, &"falling", &"carry", 1, &"Animation", &"falling", 0, &"movement", &"falling", 1, &"Animation 4", &"movement", 0, &"Animation 2", &"movement", 1, &"Animation 3"]
