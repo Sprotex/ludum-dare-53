@@ -1,36 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfmcqj0v4pxbm"]
+[gd_scene load_steps=11 format=3 uid="uid://bfmcqj0v4pxbm"]
 
 [ext_resource type="Script" path="res://blocks/character/enemy/EnemyMoveInput.gd" id="1_lqrnv"]
+[ext_resource type="PackedScene" uid="uid://lpyorcs5g8jc" path="res://blocks/character/block_dude.tscn" id="1_xo7jc"]
 [ext_resource type="Script" path="res://blocks/character/Walking.gd" id="2_5fwhv"]
+[ext_resource type="Script" path="res://blocks/character/player/CharacterAnimationControl.gd" id="2_g8rqd"]
 [ext_resource type="Script" path="res://blocks/character/player/RotationAligner.gd" id="3_4fyqf"]
 [ext_resource type="Script" path="res://blocks/character/player/BoxWeilder.gd" id="4_6dx1p"]
 [ext_resource type="Script" path="res://blocks/character/enemy/BoxReceiver.gd" id="5_v101f"]
 [ext_resource type="Script" path="res://blocks/character/enemy/VisibilityResolver.gd" id="6_42akm"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tkgs"]
+albedo_color = Color(1, 0, 0, 1)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bym5w"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0akn"]
-albedo_color = Color(1, 0, 0.101961, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_2eig0"]
 
 [node name="Enemy" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 collision_layer = 2
 collision_mask = 15
 
+[node name="block_dude" parent="." instance=ExtResource("1_xo7jc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
+
+[node name="Final" parent="block_dude/Armature/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_2tkgs")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_bym5w")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_k0akn")
-mesh = SubResource("CapsuleMesh_2eig0")
-skeleton = NodePath("../..")
-
-[node name="Nose" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.251765, 0, 0, 0, 0.0881899, 0, 0, 0, 0.364906, 0, 0.536, -0.5)
-mesh = SubResource("CapsuleMesh_2eig0")
-skeleton = NodePath("../..")
+[node name="CharacterAnimationControl" type="Node" parent="." node_paths=PackedStringArray("animation_relay", "box_weilder", "body", "walking")]
+script = ExtResource("2_g8rqd")
+animation_relay = NodePath("../block_dude")
+box_weilder = NodePath("../BoxLogic/BoxWeilder")
+body = NodePath("..")
+walking = NodePath("../Walking")
 
 [node name="EnemyMoveInput" type="Node" parent="."]
 script = ExtResource("1_lqrnv")
@@ -69,3 +72,5 @@ box_weilder = NodePath("../../BoxLogic/BoxWeilder")
 body = NodePath("../..")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="VisibleOnScreenNotifier3D/VisibilityResolver" method="_on_visible_on_screen_notifier_3d_screen_exited"]
+
+[editable path="block_dude"]
