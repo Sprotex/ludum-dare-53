@@ -21,6 +21,7 @@ func throw_box() -> void:
   box.global_rotation = box_global_rotation
   box.linear_velocity += -box_weilder.global_transform.basis.z * throw_power
   box.angular_velocity += Random.vector(randomizer) * throw_spin_power
+  GameEvents.on_box_thrown.emit(body.global_position)
 
 func _process(_delta: float) -> void:
   if not Input.is_action_just_pressed("box_action"):

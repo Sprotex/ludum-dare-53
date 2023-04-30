@@ -15,7 +15,7 @@ extends Node3D
 @export var weird_enemy_spawn_sounds: Array[AudioStream]
 @export var weird_enemy_package_received_sounds: Array[AudioStream]
 
-
+@export var box_throw_sounds: Array[AudioStream]
 
 @onready var randomizer = RandomNumberGenerator.new()
 
@@ -64,3 +64,4 @@ func _ready():
   GameEvents.on_stepped.connect(func(audio_position): play_random_sound(steps, audio_position)) 
   GameEvents.on_enemy_spawned.connect(play_mood_enemy_spawn, CONNECT_DEFERRED)
   GameEvents.on_package_delivered.connect(play_mood_enemy_box_received)
+  GameEvents.on_box_thrown.connect(func(audio_position): play_random_sound(box_throw_sounds, audio_position))
