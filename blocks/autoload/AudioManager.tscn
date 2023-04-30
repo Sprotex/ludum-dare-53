@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cslai2ocp2ih5"]
+[gd_scene load_steps=23 format=3 uid="uid://cslai2ocp2ih5"]
 
 [ext_resource type="Script" path="res://blocks/autoload/AudioManager.gd" id="1_dmwgg"]
 [ext_resource type="AudioStream" uid="uid://2kmfrwagi74f" path="res://assets/audio/step/step-01.ogg" id="2_vdvxa"]
@@ -12,7 +12,16 @@
 [ext_resource type="AudioStream" uid="uid://bsfkssnok2oqn" path="res://assets/audio/enemy1.ogg" id="10_mvhaj"]
 [ext_resource type="Script" path="res://blocks/autoload/AudioPlayers.gd" id="10_uus7o"]
 [ext_resource type="AudioStream" uid="uid://cylihmrm1548l" path="res://assets/audio/enemy2.ogg" id="11_ej8ok"]
+[ext_resource type="AudioStream" uid="uid://crhhl88og2l0h" path="res://assets/audio/delivery/delivery-05.ogg" id="11_khpdi"]
 [ext_resource type="AudioStream" uid="uid://vy52q732x6sq" path="res://assets/audio/enemy3.ogg" id="12_5qsmd"]
+[ext_resource type="AudioStream" uid="uid://4geacym38r1k" path="res://assets/audio/delivery/delivery-06.ogg" id="12_cvte6"]
+[ext_resource type="AudioStream" uid="uid://b3i35jyvr0wmq" path="res://assets/audio/delivery/delivery-07.ogg" id="13_0hk45"]
+[ext_resource type="AudioStream" uid="uid://bof6plqop0c3k" path="res://assets/audio/delivery/delivery-08.ogg" id="15_vajjt"]
+[ext_resource type="AudioStream" uid="uid://drm77tw8mp6iu" path="res://assets/audio/delivery/delivery-09.ogg" id="16_u17a6"]
+[ext_resource type="AudioStream" uid="uid://pecvqcayec6e" path="res://assets/audio/delivery/delivery-01.ogg" id="18_hpe2y"]
+[ext_resource type="AudioStream" uid="uid://dhjbxcu2bc1h" path="res://assets/audio/delivery/delivery-02.ogg" id="19_d4li6"]
+[ext_resource type="AudioStream" uid="uid://dvk2n85rauhof" path="res://assets/audio/delivery/delivery-03.ogg" id="20_lnd7a"]
+[ext_resource type="AudioStream" uid="uid://cmob3kan57vph" path="res://assets/audio/delivery/delivery-04.ogg" id="21_tqgme"]
 
 [node name="AudioManager" type="Node3D" node_paths=PackedStringArray("music_player", "audio_players", "important_audio_players")]
 script = ExtResource("1_dmwgg")
@@ -21,8 +30,11 @@ audio_players = NodePath("AudioPlayers")
 important_audio_players = NodePath("ImporantAudioPlayers")
 steps = Array[AudioStream]([ExtResource("2_vdvxa"), ExtResource("3_bwprm"), ExtResource("4_7hdsb"), ExtResource("5_q8y3w"), ExtResource("6_xnu3t"), ExtResource("7_56f4y"), ExtResource("8_kh3j4"), ExtResource("9_1wk37")])
 happy_enemy_spawn_sounds = Array[AudioStream]([ExtResource("10_mvhaj")])
-weird_enemy_spawn_sounds = Array[AudioStream]([ExtResource("11_ej8ok")])
+happy_enemy_package_received_sounds = Array[AudioStream]([ExtResource("11_khpdi"), ExtResource("12_cvte6"), ExtResource("13_0hk45")])
 creepy_enemy_spawn_sounds = Array[AudioStream]([ExtResource("12_5qsmd")])
+creepy_enemy_package_received_sounds = Array[AudioStream]([ExtResource("15_vajjt"), ExtResource("16_u17a6")])
+weird_enemy_spawn_sounds = Array[AudioStream]([ExtResource("11_ej8ok")])
+weird_enemy_package_received_sounds = Array[AudioStream]([ExtResource("18_hpe2y"), ExtResource("19_d4li6"), ExtResource("20_lnd7a"), ExtResource("21_tqgme")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 

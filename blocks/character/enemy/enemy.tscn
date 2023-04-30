@@ -72,9 +72,10 @@ script = ExtResource("6_42akm")
 box_weilder = NodePath("../../BoxLogic/BoxWeilder")
 body = NodePath("../..")
 
-[node name="EnemySounds" type="Node" parent="." node_paths=PackedStringArray("body")]
+[node name="EnemySounds" type="Node" parent="." node_paths=PackedStringArray("body", "box_receiver")]
 script = ExtResource("9_idw0k")
 body = NodePath("..")
+box_receiver = NodePath("../BoxLogic/BoxReceiver")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="VisibleOnScreenNotifier3D/VisibilityResolver" method="_on_visible_on_screen_notifier_3d_screen_exited"]
 
