@@ -16,6 +16,10 @@ extends Node3D
 @export var weird_enemy_package_received_sounds: Array[AudioStream]
 
 @export var box_throw_sounds: Array[AudioStream]
+@export var box_small_impacts: Array[AudioStream]
+@export var box_big_impacts: Array[AudioStream]
+
+@export var jump_sounds: Array[AudioStream]
 
 @onready var randomizer = RandomNumberGenerator.new()
 
@@ -49,19 +53,30 @@ func play_mood_enemy_spawn(node: Node3D, mood: EnemyType.Mood) -> void:
 
 
 
-func play_mood_enemy_box_received(position: Vector3, mood: EnemyType.Mood) -> void:
+func play_mood_enemy_box_received(audio_position: Vector3, mood: EnemyType.Mood) -> void:
   var streams = happy_enemy_package_received_sounds
   match mood:
     EnemyType.Mood.CREEPY:
       streams = creepy_enemy_package_received_sounds
     EnemyType.Mood.WEIRD:
       streams = weird_enemy_package_received_sounds
-  play_random_sound(streams, position)
+  play_random_sound(streams, audio_position)
   
       
+func play_box_impact(audio_position: Vector3, velocity: Vector3) -> void:
+  var big_impact_velocity = 5.0
+  var big_impact_velocity_squared = big_impact_velocity * big_impact_velocity
+  var impact_sounds = box_small_impacts
+  if velocity.length_squared() >= big_impact_velocity_squared:
+    impact_sounds = box_big_impacts
+  play_random_sound(impact_sounds, audio_position)
+
+
 func _ready():
   music_player.play()
   GameEvents.on_stepped.connect(func(audio_position): play_random_sound(steps, audio_position)) 
   GameEvents.on_enemy_spawned.connect(play_mood_enemy_spawn, CONNECT_DEFERRED)
   GameEvents.on_package_delivered.connect(play_mood_enemy_box_received)
   GameEvents.on_box_thrown.connect(func(audio_position): play_random_sound(box_throw_sounds, audio_position))
+  GameEvents.on_box_collided.connect(play_box_impact)
+  GameEvents.on_jumped.connect(func(audio_position): play_random_sound(jump_sounds, audio_position))

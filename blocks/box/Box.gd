@@ -41,7 +41,12 @@ func _explode() -> void:
     body.velocity += impulse
   queue_free()
 
+
 func start_explosion_countdown() -> void:
   timer.start()
   await timer.timeout
   _explode()
+
+
+func _on_body_entered(colliding_body:Node):
+  GameEvents.on_box_collided.emit(global_position, linear_velocity)

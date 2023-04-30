@@ -34,15 +34,6 @@ func _handle_two_way_collision_coupling() -> void:
       on_collided_with_box.emit(collider)
 
 
-func _handle_gravity(delta: float) -> void:
-  if not body.is_on_floor():
-    body.velocity.y -= gravity * delta
-
-func _handle_jump(_delta: float) -> void:
-  if Input.is_action_just_pressed("jump") and body.is_on_floor():
-    body.velocity.y = jump_velocity
-
-
 func _handle_walk(delta: float) -> void:
   var direction = move_input.direction
   if direction:
@@ -55,8 +46,6 @@ func _handle_walk(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-  _handle_gravity(delta)
-  _handle_jump(delta)
   _handle_walk(delta)
   body.move_and_slide()
   _handle_two_way_collision_coupling()		

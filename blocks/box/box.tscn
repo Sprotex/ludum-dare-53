@@ -11,6 +11,8 @@ radius = 5.83543
 
 [node name="Box" type="RigidBody3D" node_paths=PackedStringArray("mesh", "timer", "explosion_sphere")]
 collision_mask = 7
+max_contacts_reported = 1
+contact_monitor = true
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_cpfrd")
@@ -36,4 +38,5 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_nr0v3")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]

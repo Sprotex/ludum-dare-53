@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://byj8jn5wgprlq"]
+[gd_scene load_steps=15 format=3 uid="uid://byj8jn5wgprlq"]
 
 [ext_resource type="Script" path="res://blocks/character/player/PlayerMoveInput.gd" id="1_1u0jw"]
 [ext_resource type="PackedScene" uid="uid://lpyorcs5g8jc" path="res://blocks/character/block_dude.tscn" id="1_ftvrs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://blocks/character/Walking.gd" id="2_x5uh0"]
 [ext_resource type="Script" path="res://blocks/character/player/RotationAligner.gd" id="3_dhrt0"]
 [ext_resource type="Script" path="res://blocks/character/player/BoxWeilder.gd" id="4_y81wd"]
+[ext_resource type="Script" path="res://blocks/character/player/Jumping.gd" id="5_hntx5"]
 [ext_resource type="Script" path="res://blocks/character/player/BoxSceneHolder.gd" id="5_wy7pc"]
 [ext_resource type="PackedScene" uid="uid://kjih6718j3jp" path="res://blocks/box/box.tscn" id="6_fxagx"]
 [ext_resource type="Script" path="res://blocks/character/player/BoxCreator.gd" id="7_31ncr"]
@@ -37,6 +38,10 @@ walking = NodePath("../Walking")
 
 [node name="PlayerMoveInput" type="Node" parent="."]
 script = ExtResource("1_1u0jw")
+
+[node name="Jumping" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("5_hntx5")
+body = NodePath("..")
 
 [node name="Walking" type="Node" parent="." node_paths=PackedStringArray("body", "move_input")]
 script = ExtResource("2_x5uh0")
