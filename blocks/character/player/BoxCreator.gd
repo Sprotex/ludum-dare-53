@@ -15,6 +15,7 @@ func create() -> void:
   tween.set_trans(Tween.TRANS_ELASTIC)
   tween.tween_method(box.change_visual_scale, Vector3.ZERO, Vector3.ONE, 0.5)
   box_weilder.set_box(box)
+  GameEvents.on_box_created.emit(box_weilder.global_position)
 
 
 func _process(delta: float) -> void:
