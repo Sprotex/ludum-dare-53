@@ -6,7 +6,6 @@ extends Control
 
 func _update_score_internal() -> void:
   score_label.text = "Boxes delivered: %d" % ScoreManager.current_score
-  print(ScoreManager.current_score)
 
 
 func _update_score(_position: Vector3, _mood: EnemyType.Mood) -> void:
