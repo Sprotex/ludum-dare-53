@@ -55,5 +55,5 @@ func start_explosion_countdown() -> void:
   _explode()
 
 
-func _on_body_entered(colliding_body:Node):
+func _on_body_entered(_colliding_body:Node):
   GameEvents.on_box_collided.emit(global_position, linear_velocity)
