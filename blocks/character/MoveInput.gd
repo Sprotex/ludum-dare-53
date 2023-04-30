@@ -3,7 +3,7 @@ extends Node
 class_name MoveInput
 
 var is_inverted = false
-var direction
+var direction = Vector3.ZERO
 
 
 func _set_direction() -> void:

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://lpyorcs5g8jc"]
+
+[ext_resource type="PackedScene" uid="uid://cafvlq460xr8o" path="res://assets/block_dude.gltf" id="1_bbx8a"]
+[ext_resource type="Script" path="res://blocks/character/block_dude.gd" id="2_o82hq"]
+
+[node name="block_dude" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_bbx8a")]
+script = ExtResource("2_o82hq")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Leg" parent="." index="0"]
+visible = false
+
+[node name="Arm" parent="." index="1"]
+visible = false
+
+[node name="Skeleton3D" parent="Armature" index="1"]
+bones/1/position = Vector3(6.81377e-08, 0, -0.705255)
+bones/2/rotation = Quaternion(0.886352, -0.0907413, -0.409308, 0.1965)
+bones/3/rotation = Quaternion(0.1965, 0.409308, 0.0907412, 0.886353)
+bones/6/rotation = Quaternion(0.513958, 0.156646, 0.768367, 0.347737)
+bones/7/rotation = Quaternion(0.513958, -0.156646, 0.768367, -0.347737)
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = "idle"
