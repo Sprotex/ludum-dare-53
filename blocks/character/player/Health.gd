@@ -6,6 +6,7 @@ extends Node
 @export var trigger_area: Area3D
 @export var timer: Timer
 @export var block_dude: BlockDudeRelay
+@export var hurt_material: Material
 
 @onready var health = max_health
 
@@ -23,9 +24,11 @@ func _on_area_3d_area_entered(area:Area3D):
   if health <= 0:
     _handle_death()
     return
-  block_dude.mesh.transparency = hurt_transparency
+  GameEvents.on_health_lost.emit()
+  block_dude.mesh.material_override = hurt_material
   timer.start()
   await timer.timeout
+  block_dude.mesh.material_override = null
   timer.stop()
   block_dude.mesh.transparency = 0.0
 

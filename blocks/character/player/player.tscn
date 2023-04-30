@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://byj8jn5wgprlq"]
+[gd_scene load_steps=18 format=3 uid="uid://byj8jn5wgprlq"]
 
 [ext_resource type="Script" path="res://blocks/character/player/PlayerMoveInput.gd" id="1_1u0jw"]
 [ext_resource type="PackedScene" uid="uid://lpyorcs5g8jc" path="res://blocks/character/block_dude.tscn" id="1_ftvrs"]
@@ -15,6 +15,11 @@
 [ext_resource type="Script" path="res://blocks/character/player/BoxPicker.gd" id="9_x42qx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6vbtk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srpdt"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.176471, 0.176471, 0.176471, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_csb1l"]
 radius = 0.6
@@ -49,6 +54,7 @@ move_input = NodePath("../PlayerMoveInput")
 trigger_area = NodePath("Area3D")
 timer = NodePath("Timer")
 block_dude = NodePath("../block_dude")
+hurt_material = SubResource("StandardMaterial3D_srpdt")
 
 [node name="Area3D" type="Area3D" parent="Health"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

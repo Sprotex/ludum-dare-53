@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://gmd6x0cqllo1"]
+[gd_scene load_steps=66 format=3 uid="uid://gmd6x0cqllo1"]
 
 [ext_resource type="Script" path="res://blocks/autoload/AudioManager.gd" id="1_dmwgg"]
 [ext_resource type="AudioStream" uid="uid://2kmfrwagi74f" path="res://assets/audio/step/step-01.ogg" id="2_vdvxa"]
@@ -63,6 +63,8 @@
 [ext_resource type="AudioStream" uid="uid://cepql0hfys7j4" path="res://assets/audio/jump.ogg" id="59_vm83p"]
 [ext_resource type="AudioStream" uid="uid://cniw154yrx8ni" path="res://assets/audio/explosion/explosion-01.wav" id="60_glmc0"]
 [ext_resource type="AudioStream" uid="uid://cwxms3bg2iwiy" path="res://assets/audio/explosion/explosion-02.wav" id="61_31ncl"]
+[ext_resource type="AudioStream" uid="uid://c45pfvpsr75js" path="res://assets/audio/hurt.ogg" id="62_yrfc1"]
+[ext_resource type="AudioStream" uid="uid://dbtmutt8ry45l" path="res://assets/audio/death.ogg" id="63_ksfb0"]
 
 [node name="AudioManager" type="Node3D" node_paths=PackedStringArray("music_player", "audio_players", "important_audio_players")]
 script = ExtResource("1_dmwgg")
@@ -81,6 +83,8 @@ box_throw_sounds = Array[AudioStream]([ExtResource("22_60eds"), ExtResource("23_
 box_small_impacts = Array[AudioStream]([ExtResource("32_ufp1d"), ExtResource("33_l0x0e"), ExtResource("34_mmv48"), ExtResource("35_4x00t"), ExtResource("36_eyywx"), ExtResource("37_ofger"), ExtResource("38_oomet"), ExtResource("39_sl04y"), ExtResource("40_4lnsx"), ExtResource("41_kefsg"), ExtResource("42_7onoy"), ExtResource("43_0w8k1"), ExtResource("44_ilv7m"), ExtResource("45_35ekj"), ExtResource("46_v6g78")])
 box_big_impacts = Array[AudioStream]([ExtResource("47_0i1h7"), ExtResource("48_cxt8c"), ExtResource("49_lhncy"), ExtResource("50_8wwde"), ExtResource("51_6mnj8"), ExtResource("52_mlb7j"), ExtResource("53_ye7tr"), ExtResource("54_j5hnn"), ExtResource("55_75eho"), ExtResource("56_8gld4"), ExtResource("57_y4e6p"), ExtResource("58_wqqp8")])
 box_exploded_sounds = Array[AudioStream]([ExtResource("60_glmc0"), ExtResource("61_31ncl")])
+hurt_sounds = Array[AudioStream]([ExtResource("62_yrfc1")])
+death_sounds = Array[AudioStream]([ExtResource("63_ksfb0")])
 jump_sounds = Array[AudioStream]([ExtResource("59_vm83p")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
@@ -91,3 +95,4 @@ script = ExtResource("10_uus7o")
 [node name="ImporantAudioPlayers" type="Node3D" parent="."]
 script = ExtResource("10_uus7o")
 count = 32
+bus = "LoopedSound"

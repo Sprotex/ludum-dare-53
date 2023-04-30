@@ -9,4 +9,5 @@ signal on_box_created(position: Vector3)
 signal on_box_thrown(position: Vector3)
 signal on_box_exploded(position: Vector3)
 signal on_restarted
+signal on_health_lost
 signal on_all_health_lost

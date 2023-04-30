@@ -3,6 +3,7 @@ extends Node3D
 class_name AudioPlayers
 
 @export var count = 8
+@export var bus = "Sound"
 var players: Array[AudioStreamPlayer3D]
 var last_index = 0
 
@@ -14,7 +15,7 @@ func _ready():
   for i in count:
     var player = AudioStreamPlayer3D.new()
     add_child(player)
-    player.bus = "Sound"
+    player.bus = bus
     players.append(player)
 
 
